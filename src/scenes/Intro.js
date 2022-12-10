@@ -40,6 +40,7 @@ class Intro extends Scene {
       });
     });
   }
+
   typewriteText(text) {
     const length = text.length;
     let i = 0;

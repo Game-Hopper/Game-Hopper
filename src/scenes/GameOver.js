@@ -23,11 +23,8 @@ class GameOver extends Scene {
     this.background.displayWidth = this.sys.canvas.width;
     this.background.displayHeight = this.sys.canvas.height;
 
-
     //Game over png
     this.add.image(x, y - 150, 'gameOver').setScale(4);
-
-
 
     const score = data.score || 0;
     this.scoreText = this.add.text(
@@ -56,6 +53,9 @@ class GameOver extends Scene {
       this.scene.start('MainMenu');
     });
 
+    this.ouchieText = this.add.text(x - 250, y - 200, '').setScale(1.25);
+    this.typewriteText(data.defeatText);
+
     const element = this.add.dom(x, y + 170).createFromCache('form');
 
     element.setPerspective(300);
@@ -71,6 +71,19 @@ class GameOver extends Scene {
         });
         store.dispatch(fetchScores());
       }
+    });
+  }
+
+  typewriteText(text) {
+    const length = text.length;
+    let i = 0;
+    this.time.addEvent({
+      callback: () => {
+        this.ouchieText.text += text[i];
+        i++;
+      },
+      repeat: length - 1,
+      delay: 30,
     });
   }
 }

@@ -17,7 +17,6 @@ class FirstFight_Start extends Scene {
 
   // heartCount = 0;
 
-
   constructor(data) {
     super({ key: 'FirstFight_Start' });
   }
@@ -115,7 +114,6 @@ class FirstFight_Start extends Scene {
     this.groundAndPlatforms.setCollisionBetween(142, 170);
     this.groundAndPlatforms.setCollisionBetween(743, 746);
     this.invisibleLayer.setCollisionBetween(139, 170);
-
 
     // Text
 
@@ -216,7 +214,13 @@ class FirstFight_Start extends Scene {
     // }
 
     if (this.player.hp <= 0) {
-      this.gameOver(data);
+      this.gameOver({
+        music: data.music,
+        hp: this.player.hp,
+        score: this.player.score,
+        timer: this.timer,
+        defeatText: '',
+      });
     }
 
     for (let i = 0; i < this.enemiesArray.length; i++) {
