@@ -3,6 +3,7 @@ import { Lisa } from '../sprites/Lisa.js';
 import { Enemy } from '../sprites/Enemies/Enemy';
 import { FlyGuy } from '../sprites/Enemies/FlyGuy.js';
 import { LaserGroup } from '../weapons/Fire/Laser/LaserGroup.js';
+import WebFontFile from '../helpers/fontLoader';
 
 class FirstFight_Three extends Scene {
   cameras;
@@ -16,6 +17,10 @@ class FirstFight_Three extends Scene {
 
   constructor(data) {
     super({ key: 'FirstFight_Three' });
+  }
+
+  preload() {
+    this.load.addFile(new WebFontFile(this.load, 'Press Start 2P'));
   }
 
   create(data) {
@@ -115,7 +120,7 @@ class FirstFight_Three extends Scene {
       data.has_gun,
       data.hp,
       data.score
-    ).setPosition(1200, 100);
+    ).setPosition(x + x * 0.7, y - y * 0.5);
 
     // Display adjustments
     this.firstLayer.displayWidth = this.sys.canvas.width;
@@ -140,8 +145,6 @@ class FirstFight_Three extends Scene {
 
     // this.f.setCollisionBetween(142, 170);
     this.invisibleLayer.setCollisionBetween(139, 160);
-
-    // this.groundAndPlatforms.setCollisionBetween(720, 746);
 
     // laserGroup
     this.laserGroup = new LaserGroup(this);
