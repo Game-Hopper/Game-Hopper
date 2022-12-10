@@ -97,7 +97,7 @@ class BossFight extends Scene {
     });
 
     //Lisa
-    this.player = new Lisa(this, x, y, data.hp, data.score);
+    this.player = new Lisa(this, x, y, data.has_gun, data.hp, data.score);
 
     //Colliders
     this.physics.add.collider(this.player, this.firstLayer);
@@ -203,6 +203,7 @@ class BossFight extends Scene {
           (cam, effect) => {
             this.scene.start('PromisedLand', {
               music: data.music,
+              has_gun: data.has_gun,
               hp: this.player.hp,
               score: this.player.score,
               timer: this.timer,

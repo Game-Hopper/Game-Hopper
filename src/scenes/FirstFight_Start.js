@@ -12,6 +12,7 @@ class FirstFight_Start extends Scene {
   portal;
   laserGroup;
   enemiesArray = [];
+  has_gun = false;
 
   isPaused = false;
 
@@ -30,7 +31,7 @@ class FirstFight_Start extends Scene {
         i++;
       },
       repeat: length - 1,
-      delay: 50,
+      delay: 30,
     });
   }
 
@@ -88,7 +89,9 @@ class FirstFight_Start extends Scene {
     });
 
     //Creating lisa behind the plants
-    this.player = new Lisa(this, x, y, data.hp, data.score).setPosition(100);
+    this.player = new Lisa(this, x, y, false, data.hp, data.score).setPosition(
+      100
+    );
 
     this.rocksAndPlants = this.map.createLayer(
       'rocks_and_plants',
@@ -126,7 +129,10 @@ class FirstFight_Start extends Scene {
     this.laserGroup = new LaserGroup(this);
 
     // Gun placeholder
-    // this.gun = this.add.image(x + 150, y - 225, 'c');
+    this.gun = this.add.image(x + 150, y - 225, 'c');
+    this.physics.overlap(this.player, this.gun, () => {
+      this.getGun();
+    });
 
     // //Spawn guy
     // this.spawn = new Enemy(this, Phaser.Math.RND.between(0, 1400), y);
@@ -220,6 +226,7 @@ class FirstFight_Start extends Scene {
         score: this.player.score,
         timer: this.timer,
         defeatText: '',
+        has_gun: this.has_gun,
       });
     }
 
@@ -234,6 +241,8 @@ class FirstFight_Start extends Scene {
           hp: this.player.hp,
           score: this.player.score,
           timer: this.timer,
+          music: data.music,
+          has_gun: this.has_gun,
         });
       });
     }
@@ -261,14 +270,14 @@ class FirstFight_Start extends Scene {
     );
   }
 
-  // gameOver(data) {
-  //   this.scene.start('GameOver', {
-  //     music: data.music,
-  //     hp: this.player.hp,
-  //     score: this.player.score,
-  //     timer: this.timer,
-  //   });
-  // }
+  getGun() {
+    this.typewriteText(
+      `\nA Baretta(C) Robot-Tenderizer(TM) 6900(R)?!\nI mean don't mind if I do, but like...   \n... Who just leaves these around??'          \n... Whatevs, just press shift to shoot it.                              \n (... Okay wait why would I say that..?   \nI think the stress is getting to me)`
+    );
+    this.has_gun = true;
+    this.player.has_gun = this.has_gun;
+    this.gun.destroy();
+  }
 }
 
 export default FirstFight_Start;

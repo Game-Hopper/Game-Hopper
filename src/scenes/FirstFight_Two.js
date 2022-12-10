@@ -73,10 +73,14 @@ class FirstFight_Two extends Scene {
     });
 
     //Lisa
-    this.player = new Lisa(this, x, y, data.hp, data.score).setPosition(
-      100,
-      560
-    );
+    this.player = new Lisa(
+      this,
+      x,
+      y,
+      data.has_gun,
+      data.hp,
+      data.score
+    ).setPosition(100, 560);
 
     this.rocksAndPlants = this.map.createLayer(
       'rocks_and_plants_layer',
@@ -218,6 +222,8 @@ class FirstFight_Two extends Scene {
           hp: this.player.hp,
           score: this.player.score,
           timer: this.timer,
+          music: data.music,
+          has_gun: data.has_gun,
         });
       });
     }

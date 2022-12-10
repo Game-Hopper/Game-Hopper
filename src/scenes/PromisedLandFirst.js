@@ -75,10 +75,14 @@ class PromisedLandFirst extends Scene {
     );
 
     // adding player to be behind the plants
-    this.player = new Lisa(this, x, y, data.hp, data.score).setPosition(
-      100,
-      560
-    );
+    this.player = new Lisa(
+      this,
+      x,
+      y,
+      data.has_gun,
+      data.hp,
+      data.score
+    ).setPosition(100, 560);
 
     this.groundLayer.displayWidth = this.sys.canvas.width;
     this.groundLayer.displayHeight = this.sys.canvas.height;
@@ -108,16 +112,18 @@ class PromisedLandFirst extends Scene {
     // this.groundLayer.setCollisionBetween(455, 458);
     this.invisibleLayer.setCollisionBetween(190, 196);
   }
-  update() {
+  update(data) {
     this.player.update();
 
     // if (this.player) {
     //   this.physics.add.collider(this.player, this.phone, () => {
-    //     // this.scene.start('GameOver', {
-    //     //   hp: this.player.hp,
-    //     //   score: this.player.score,
-    //     //   timer: this.timer,
-    //     // });
+    //     this.scene.start('GameOver', {
+    //       hp: this.player.hp,
+    //       score: this.player.score,
+    //       timer: this.timer,
+    //       music: data.music,
+    //       has_gun: data.has_gun,
+    //     });
     //     this.addScore = this.add
     //       .text(x - 230, y + 95, 'Congratulations! \nYou are a winner', {
     //         fontFamily: '"Press Start 2P"',

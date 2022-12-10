@@ -1,7 +1,16 @@
+import e from 'express';
 import { Sprite } from 'phaser';
 
 export class Lisa extends Phaser.GameObjects.Sprite {
-  constructor(scene, x, y, hp = null, score = null, heartCount = null) {
+  constructor(
+    scene,
+    x,
+    y,
+    has_gun = false,
+    hp = null,
+    score = null,
+    heartCount = null
+  ) {
     super(scene, x, y, 'lisa');
 
     // Making the homie
@@ -14,7 +23,7 @@ export class Lisa extends Phaser.GameObjects.Sprite {
     this.body.setGravityY(450);
     this.body.setCollideWorldBounds(true);
 
-    // If we have HP and Score data
+    // If we have HP, Score, and has_gun data
     if (hp) this.hp = hp;
     else this.hp = 10;
     if (hp > 20) this.hp = 20;
@@ -22,6 +31,8 @@ export class Lisa extends Phaser.GameObjects.Sprite {
     else this.score = 0;
     if (heartCount) this.heartCount = heartCount;
     else this.heartCount = 0;
+
+    this.has_gun = has_gun;
 
     //Method calls for creation
     this.init();
@@ -278,7 +289,8 @@ export class Lisa extends Phaser.GameObjects.Sprite {
       this.body.blocked.down &&
       !this.is_punch &&
       !this.is_dash &&
-      !this.is_shoot
+      !this.is_shoot &&
+      this.has_gun
     ) {
       this.body.setVelocityX(0);
       this.attackAnimation('shoot');
@@ -548,9 +560,10 @@ export class Lisa extends Phaser.GameObjects.Sprite {
     player.heartCount++;
   }
 
-  // Game Over should def live here lmao
+  // Game Over should def live here:
   // Sends whatever object is passed in
-  // which should be score, timer, music, hp, and (optionally) defeated text
+  // which should be score, timer, music,
+  // hp, hasGun, and (optionally) defeatText.
   gameOver(data) {
     this.scene.scene.start('GameOver', data);
   }

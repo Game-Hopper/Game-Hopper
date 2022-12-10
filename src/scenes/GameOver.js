@@ -57,7 +57,8 @@ class GameOver extends Scene {
       .text(
         innerWidth * 0.6,
         innerHeight * 0.8,
-        'Test text do not keep in final game',
+        // 'Test text do not keep in final game',
+        '',
         {
           fontSize: '18px',
           fill: '#1542da',

@@ -77,7 +77,7 @@ class GameScene extends Scene {
       .setVisible(false);
 
     // Creating Player (Lisa)
-    this.player = new Lisa(this, x, y).setPosition(
+    this.player = new Lisa(this, x, y, true).setPosition(
       innerWidth * 0.2,
       innerHeight * 0.65
     );

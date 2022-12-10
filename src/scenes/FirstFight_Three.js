@@ -108,10 +108,14 @@ class FirstFight_Three extends Scene {
     });
 
     //Lisa
-    this.player = new Lisa(this, x, y, data.hp, data.score).setPosition(
-      1200,
-      100
-    );
+    this.player = new Lisa(
+      this,
+      x,
+      y,
+      data.has_gun,
+      data.hp,
+      data.score
+    ).setPosition(1200, 100);
 
     // Display adjustments
     this.firstLayer.displayWidth = this.sys.canvas.width;
@@ -233,6 +237,8 @@ class FirstFight_Three extends Scene {
           hp: this.player.hp,
           score: this.player.score,
           timer: this.timer,
+          music: data.music,
+          has_gun: data.has_gun,
         });
       });
     }

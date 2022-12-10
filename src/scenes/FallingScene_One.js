@@ -53,7 +53,7 @@ class FallingScene_One extends Scene {
     this.texturesTwoLayer.displayHeight = this.sys.canvas.height;
 
     // Creating Player (Lisa)
-    this.player = new Lisa(this, x + x * 0.05, 0, data.hp, data.score);
+    this.player = new Lisa(this, x + x * 0.05, 0, false, data.hp, data.score);
 
     //Platforms
 
