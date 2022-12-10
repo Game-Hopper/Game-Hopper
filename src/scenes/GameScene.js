@@ -77,6 +77,7 @@ class GameScene extends Scene {
       .setVisible(false);
 
     // Creating Player (Lisa)
+    // The true should be set to false/removed in final version -- is for testing
     this.player = new Lisa(this, x, y, true).setPosition(
       innerWidth * 0.2,
       innerHeight * 0.65
