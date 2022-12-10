@@ -53,8 +53,19 @@ class GameOver extends Scene {
       this.scene.start('MainMenu');
     });
 
-    this.ouchieText = this.add.text(x - 250, y - 200, '').setScale(1.25);
-    this.typewriteText(data.defeatText);
+    this.ouchieText = this.add
+      .text(
+        innerWidth * 0.6,
+        innerHeight * 0.8,
+        'Test text do not keep in final game',
+        {
+          fontSize: '18px',
+          fill: '#1542da',
+          fontStyle: 'italic',
+        }
+      )
+      .setScale(1.25);
+    if (data.defeatText) this.typewriteText(data.defeatText);
 
     const element = this.add.dom(x, y + 170).createFromCache('form');
 

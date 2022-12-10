@@ -552,6 +552,6 @@ export class Lisa extends Phaser.GameObjects.Sprite {
   // Sends whatever object is passed in
   // which should be score, timer, music, hp, and (optionally) defeated text
   gameOver(data) {
-    this.scene.start('GameOver', data);
+    this.scene.scene.start('GameOver', data);
   }
 }

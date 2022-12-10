@@ -214,7 +214,7 @@ class FirstFight_Start extends Scene {
     // }
 
     if (this.player.hp <= 0) {
-      this.gameOver({
+      this.player.gameOver({
         music: data.music,
         hp: this.player.hp,
         score: this.player.score,
@@ -261,14 +261,14 @@ class FirstFight_Start extends Scene {
     );
   }
 
-  gameOver(data) {
-    this.scene.start('GameOver', {
-      music: data.music,
-      hp: this.player.hp,
-      score: this.player.score,
-      timer: this.timer,
-    });
-  }
+  // gameOver(data) {
+  //   this.scene.start('GameOver', {
+  //     music: data.music,
+  //     hp: this.player.hp,
+  //     score: this.player.score,
+  //     timer: this.timer,
+  //   });
+  // }
 }
 
 export default FirstFight_Start;
